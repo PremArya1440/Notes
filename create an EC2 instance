@@ -1,0 +1,168 @@
+In a **Terraform interview**, they may ask you to organize code into files like:
+
+* `provider.tf`
+* `data.tf`
+* `variables.tf`
+* `locals.tf`
+* `ec2.tf`
+
+Below is a **clean interview-standard example** to create an **EC2 instance**.
+
+---
+
+# 1️⃣ variables.tf
+
+Define input variables.
+
+```hcl
+variable "aws_region" {
+  type        = string
+  description = "AWS Region"
+  default     = "us-east-1"
+}
+
+variable "instance_type" {
+  type        = string
+  description = "EC2 Instance type"
+  default     = "t2.micro"
+}
+
+variable "environment" {
+  type        = string
+  description = "Environment name"
+  default     = "dev"
+}
+```
+
+---
+
+# 2️⃣ data.tf
+
+Fetch existing AWS resources.
+
+```hcl
+data "aws_ami" "amazon_linux" {
+  most_recent = true
+
+  owners = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+}
+```
+
+This will fetch the **latest Amazon Linux AMI automatically**.
+
+---
+
+# 3️⃣ locals.tf
+
+Local values used inside Terraform.
+
+```hcl
+locals {
+
+  instance_name = "terraform-ec2-${var.environment}"
+
+  common_tags = {
+    Environment = var.environment
+    Terraform   = "true"
+  }
+
+}
+```
+
+Purpose:
+
+* Reduce repeated code
+* Improve readability
+
+---
+
+# 4️⃣ ec2.tf
+
+Create the EC2 instance.
+
+```hcl
+resource "aws_instance" "example" {
+
+  ami           = data.aws_ami.amazon_linux.id
+  instance_type = var.instance_type
+
+  tags = merge(
+    local.common_tags,
+    {
+      Name = local.instance_name
+    }
+  )
+
+}
+```
+
+Explanation:
+
+| Field         | Meaning                      |
+| ------------- | ---------------------------- |
+| ami           | AMI fetched from data source |
+| instance_type | From variable                |
+| tags          | Combine local tags           |
+
+---
+
+# 5️⃣ provider.tf
+
+Configure AWS provider.
+
+```hcl
+provider "aws" {
+
+  region = var.aws_region
+
+}
+```
+
+---
+
+# 📁 Final Folder Structure (Interview Best Practice)
+
+```
+terraform-project
+│
+├── provider.tf
+├── variables.tf
+├── data.tf
+├── locals.tf
+└── ec2.tf
+```
+
+---
+
+# 💡 Interview Tip (Very Important)
+
+If interviewer asks:
+
+**Why separate files?**
+
+Answer:
+
+> Terraform loads all `.tf` files automatically. We split files for **better readability, modularity, and team collaboration**.
+
+Example:
+
+* `variables.tf` → inputs
+* `data.tf` → existing resources
+* `locals.tf` → reusable values
+* `ec2.tf` → infrastructure resources
+
+---
+
+✅ If you want, I can also show **an advanced interview answer** with:
+
+* **Security Group**
+* **VPC data source**
+* **Key pair**
+* **Remote state (S3 backend)**
+
+This is **commonly asked in DevOps interviews**.
