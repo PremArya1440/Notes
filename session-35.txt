@@ -1,5 +1,4 @@
-session 35
-==========
+
 workspace -> terraform.workspace
 
 terraform workspace new dev
