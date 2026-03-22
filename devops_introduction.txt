@@ -1,0 +1,53 @@
+I have 3 years of experience.
+I am currently working in HClTech organization where the organization has a e-commerce application and this
+e-commerce application is a multi microservice architecture because there are more than 100 microservices.
+There are multiple development teams and each development team is responsible for certain microservices.
+ 5 microservices.
+
+As a DevOps engineer.
+My role is to work closely with two development teams.
+So my project is basically to work for both of those development teams and implement DevOps or constantly
+improve the DevOps practices for those development teams.
+And as part of that, I work on CI, CD for that projects.
+I work on writing Terraform  Infrastructure as code for them, and also I work on Kubernetes implementation.
+Constantly improving the existing scripts.
+
+my project where I work for the development
+ 
+ they have multiple microservices.
+I am responsible for DevOps implementation of those microservices and 
+ 
+ 
+ 
+ 
+========== talking about my day to day activities-==============
+ 
+ 
+ I work for two development
+teams where I closely attend their meetings and I work with them in agile methodology, where these
+development teams plan activities during the sprints, or they plan activities for the entire quarter,
+and I closely involved with them during that meetings, so that I understand the roadmap of those development
+teams for the coming quarter.
+And with that, I can also estimate the amount of work that is going to come to me, and I would plan
+my activities accordingly.
+ 
+Let me explain some of the tasks that I get from those teams.
+For example, 
+the team requests me to create some infrastructure because I am the one who developed
+and manage infrastructure as code for those development teams.
+One of the recent activity that I worked on was to set up EKS cluster within VPC, and I set that up
+in the module structure so that going ahead, either other 
+
+DevOps teams or someone who is joining my
+team or someone who is going to work along with me, can also use those Terraform modules.
+Along with that, 
+I get a lot of requests related to Kubernetes deployments.
+
+I have requests to set up GitOps practices for the development teams, or it can be even activities
+related to AWS.
+And there are some frequent activities like git management where we have multiple get repositories.
+So I set up webhooks for that.
+
+I manage the git repositories with respect to branching.
+I make sure the branching strategy is up to date.
+So these are some of the day to day activities that I work on.
