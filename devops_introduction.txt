@@ -5,7 +5,7 @@ There are multiple development teams and each development team is responsible fo
  5 microservices.
 
 As a DevOps engineer.
-My role is to work closely with two development teams.
+My role is to work closely with two development teams
 So my project is basically to work for both of those development teams and implement DevOps or constantly
 improve the DevOps practices for those development teams.
 And as part of that, I work on CI, CD for that projects.
@@ -16,7 +16,6 @@ my project where I work for the development
  
  they have multiple microservices.
 I am responsible for DevOps implementation of those microservices and 
- 
  
  
  
