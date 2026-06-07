@@ -1,0 +1,73 @@
+New Instance create in aws consol
+
+mobaxterm:
+Commands
+Mobaxterm: Resize disk
+
+sudo su -
+sudo growpart /dev/nvme0n1 4
+sudo lvextend -L +30G /dev/RootVG/varVol
+sudo xfs_growfs /var
+exit
+
+ So Docker installation completed
+=========run the commnads======
+sudo dnf -y install dnf-plugins-core
+sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo usermod -aG docker ec2-user
+
+===============
+============eksctl install
+1)ARCH=amd64
+2)PLATFORM=$(uname -s)_$ARCH
+3)curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
+
+4)tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
+5)sudo install -m 0755 /tmp/eksctl /usr/local/bin && rm /tmp/eksctl
+6)eksctl version
+=============
+======install kubectl=========
+open this link aws 
+https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
+
+use this 
+
+1)curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+
+ 
+2)Apply execute permissions to the binary: sudo chmod +x ./kubectl
+===
+3)mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
+4)kubectl version --client
+5)aws configure
+
+go to access mangement select IAM user in aws
+create access key
+
+[ ec2-user@ip-172-31-14-184 ~ ]$ aws configure
+AWS Access Key ID 
+AWS Secret Access Key 
+Default region name 
+Default output format 
+=========
+go to this repo ekctl 
+1)git clone https://github.com/prem-kumar-dlumudi/eksctl.git
+
+
+2)[ ec2-user@ip-172-31-33-89 ~ ]$ cd eksctl/
+
+create command  and update ,delete we can use this command
+
+3)eksctl create cluster --config-file=eks.yaml
+4)once your work finesh delete the cluster
+eksctl delete cluster --config-file=eks.yaml
+or
+officical document
+https://github.com/eksctl-io/eksctl/blob/main/examples/08-spot-instances.yaml
+================
+
+
